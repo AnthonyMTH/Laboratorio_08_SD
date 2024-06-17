@@ -14,6 +14,22 @@ public class Main {
             System.out.println("La conexión con MySql ha sido establecida!");
 
             try {
+                DepartmentService departmentService = new DepartmentService(connection);
+
+                // Insertar registros
+                departmentService.insertDepartment(4, "Finanzas", "456789012", "654321098");
+                departmentService.insertDepartment(5, "Legal", "567890123", "543210987");
+
+                // Actualizar un registro
+                departmentService.updateDepartment(4, "Finanzas y Contabilidad", "456789012", "654321098");
+
+                // Eliminar un registro
+                departmentService.deleteDepartment(5);
+
+                // Consultar todos los departamentos
+                System.out.println("Todos los departamentos:");
+                departmentService.getAllDepartments();
+
                 ProjectService projectService = new ProjectService(connection);
                 projectService.getProjectsByDepartment(2);
 
